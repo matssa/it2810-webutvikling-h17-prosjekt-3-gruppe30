@@ -8,13 +8,20 @@ class ToDoList extends Component {
           let l = this.props.items;
           console.log(l);
           let names = ['Jake', 'Jon', 'Thruster'];
+
+          function removeItem(event, props) {
+            l.splice(0,1);
+            console.log(l);
+
+          }
+
           const listItems = l.map((l) =>
-          <li>{l} <button/> </li>
+          <li key = {l}>{l} <button id="removeItem" onClick={removeItem}/> </li>
           );
           return (
-              <ul>
-                {listItems}
-              </ul>
+            <ul>
+            {listItems}
+            </ul>
           );
       }
 

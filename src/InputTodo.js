@@ -6,7 +6,7 @@ class InputTodo extends Component {
     super(props);
     this.state = {
       text: '',
-      items: ["staticlistitem"]
+      items: []
     };
     var x = ['hei', 'pa', 'deg']
     this.handleChange = this.handleChange.bind(this);
@@ -38,7 +38,6 @@ class InputTodo extends Component {
   }
 
   render() {
-
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
