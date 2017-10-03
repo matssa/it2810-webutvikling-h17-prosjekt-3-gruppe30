@@ -1,13 +1,20 @@
 import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
-import Footer from "./Footer.js"
+import InputTodo from './InputTodo';
+import Footer from "./Footer";
+import { NavBar } from "./NavBar.js"
+
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-      <Footer />
+        <NavBar />
+        <h1>Your personal information manager</h1>
+        <h2>Things to do</h2>
+        <InputTodo/>
+        <Footer/>
       </div>
     );
   }
