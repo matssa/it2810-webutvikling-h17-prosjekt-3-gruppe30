@@ -10,10 +10,11 @@ class InputTodo extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.returnState = this.returnState.bind(this);
+    this.removeItem = this.removeItem.bind(this);
   }
 
   returnState () {
-    this.props.items;
+    return this.props.items;
   }
 
   addInput({input}) {
@@ -25,27 +26,24 @@ class InputTodo extends Component {
   }
 
   handleSubmit(event) {
-    alert('Din todo: ' + this.state.value);
     this.state.items.push(this.state.value);
     this.setState({value: event.target.value});
     event.preventDefault();
   }
 
+  removeItem(event, index) {
+    this.state.items.splice(index,1);
+    this.setState({value: event.target.value});
+  }
+
   render() {
-    let l = this.state.items;
-    let listItems = l.map((l, index) =>
-    <li key = {l}>{l} <button id="removeItem" onClick={removeItem}/> </li>
+    let listItems = this.state.items.map((l, index) =>
+    <li key = {l}> {l} <button id="removeItem" onClick={this.removeItem}/> </li>
     );
-
-    function removeItem(event) {
-      this.state.items.splice(0,1);
-    }
-
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
         <label>
-          Name:
           <textarea value={this.state.value} onChange={this.handleChange}/>
         </label>
         <input type="submit" value="Submit"/>
