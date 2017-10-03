@@ -26,3 +26,11 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+footer{
+  background-color: #eff7f8;
+  padding-bottom: 15px;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  text-align: center;
+}
