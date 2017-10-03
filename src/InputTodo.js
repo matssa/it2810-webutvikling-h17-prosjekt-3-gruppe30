@@ -7,7 +7,6 @@ class InputTodo extends Component {
       text: '',
       items: []
     };
-    var x = ['hei', 'pa', 'deg']
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.returnState = this.returnState.bind(this);
@@ -15,10 +14,6 @@ class InputTodo extends Component {
 
   returnState () {
     this.props.items;
-  }
-
-  returnState2 () {
-    this.props.x;
   }
 
   addInput({input}) {

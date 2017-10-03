@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import InputTodo from './InputTodo';
-import ToDoList from './ToDoList';
 
 
 class App extends Component {
@@ -11,7 +10,7 @@ class App extends Component {
       <div className="App">
         <header>TodoList</header>
         <InputTodo/>
-        
+
       </div>
     );
   }
