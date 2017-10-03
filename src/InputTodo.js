@@ -1,5 +1,4 @@
 import React, {Component} from 'react';
-import ToDoList from './ToDoList'
 
 class InputTodo extends Component {
   constructor(props) {
@@ -38,6 +37,15 @@ class InputTodo extends Component {
   }
 
   render() {
+    let l = this.state.items;
+    let listItems = l.map((l, index) =>
+    <li key = {l}>{l} <button id="removeItem" onClick={removeItem}/> </li>
+    );
+
+    function removeItem(event) {
+      this.state.items.splice(0,1);
+    }
+
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
@@ -47,7 +55,9 @@ class InputTodo extends Component {
         </label>
         <input type="submit" value="Submit"/>
       </form>
-      <ToDoList items = {this.state.items}/>
+      <ul>
+        {listItems}
+      </ul>
     </div>
     );
   }
