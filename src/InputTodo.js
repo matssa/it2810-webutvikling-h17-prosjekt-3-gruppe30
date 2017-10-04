@@ -10,7 +10,6 @@ class InputTodo extends Component {
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
     this.returnState = this.returnState.bind(this);
-    this.removeItem = this.removeItem.bind(this);
   }
 
   returnState () {
@@ -28,18 +27,28 @@ class InputTodo extends Component {
   handleSubmit(event) {
     this.state.items.push(this.state.value);
     this.setState({value: event.target.value});
+    console.log(localStorage)
+    this.setState({value: ""});
     event.preventDefault();
   }
 
-  removeItem(event, index) {
-    this.state.items.splice(index,1);
-    this.setState({value: event.target.value});
+  renderRow() {
+    let listItems = this.state.items.map((l, index) =>
+    <li key = {index}> {l} <button id="removeItem" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
+    );
+    return listItems
   }
 
+  removeItem( index) {
+    let list = this.state.items;
+    list.splice(index,1);
+    this.setState({items: list});
+
+  }
+
+
+
   render() {
-    let listItems = this.state.items.map((l, index) =>
-    <li key = {l}> {l} <button id="removeItem" onClick={this.removeItem}/> </li>
-    );
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
@@ -49,7 +58,7 @@ class InputTodo extends Component {
         <input type="submit" value="Submit"/>
       </form>
       <ul>
-        {listItems}
+        {this.renderRow()}
       </ul>
     </div>
     );
