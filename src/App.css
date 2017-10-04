@@ -49,3 +49,12 @@ nav {
   height: 50px;
   width: 10%;
 }
+#notes{
+  background: url(http://i.stack.imgur.com/ynxjD.png) repeat-y;
+  width: 600px;
+  height: 300px;
+  font: normal 14px verdana;
+  line-height: 25px;
+  padding: 2px 10px;
+  border: solid 1px #ddd;
+}

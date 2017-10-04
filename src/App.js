@@ -4,6 +4,7 @@ import './App.css';
 import InputTodo from './InputTodo';
 import Footer from "./Footer";
 import { NavBar } from "./NavBar.js"
+import Notes from "./Notes.js";
 
 
 class App extends Component {
@@ -13,7 +14,11 @@ class App extends Component {
         <NavBar />
         <h1>Your personal information manager</h1>
         <h2>Things to do</h2>
-        <InputTodo/>
+          <InputTodo/>
+        <div>
+          <h2>Notepad</h2>
+          <Notes />
+        </div>
         <Footer/>
       </div>
     );
