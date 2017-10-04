@@ -3,7 +3,9 @@ import logo from './logo.svg';
 import './App.css';
 import InputTodo from './InputTodo';
 import Footer from "./Footer";
-import { NavBar } from "./NavBar.js"
+import { NavBar } from "./NavBar.js";
+import DatePickerS from "./Datepicker.js";
+import TimePickerS from "./Datepicker.js"
 
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
         <h1>Your personal information manager</h1>
         <h2>Things to do</h2>
         <InputTodo/>
+        <DatePickerS />
         <Footer/>
       </div>
     );
