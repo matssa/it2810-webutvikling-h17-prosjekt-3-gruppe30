@@ -2,7 +2,7 @@ import React from 'react';
 
 export class NavBar extends React.Component {
   render() {
-    const pages = ['Home', 'Todo', 'Appointments'];
+    const pages = ['Home', 'Todo', 'Appointments', 'Notes'];
     const navLinks = pages.map(page => {
       return (
         <a href={'/' + page}>

@@ -6,9 +6,11 @@ import TimePickerS from "./Datepicker.js"
 
 const Appointment = () => (
   <div>
-    <h1>Welcome to the Tornadoes Website!</h1>
+
+    <h1>Appointment page!</h1>
     <InputTodo/>
     <DatePickerS />
+    <TimePickerS />
   </div>
 )
 
