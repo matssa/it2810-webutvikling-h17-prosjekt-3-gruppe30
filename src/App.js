@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import InputTodo from './InputTodo';
 import Footer from "./Footer";
@@ -19,8 +18,6 @@ class App extends Component {
         <NavBar />
         <h1>Your personal information manager</h1>
         <h2>Things to do</h2>
-        <InputTodo/>
-        <DatePickerS />
         <p>Here you can create todos, appointments and notes : )</p>
         <Route exact path="/Todo" component={InputTodo}/>
         <Route exact path="/Appointments" component={Appointment}/>
