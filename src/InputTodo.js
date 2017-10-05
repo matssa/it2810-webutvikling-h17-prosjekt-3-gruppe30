@@ -25,12 +25,14 @@ class InputTodo extends Component {
   }
 
   handleSubmit(event) {
+if (event.which === 13) {
     this.state.items.push(this.state.value);
     this.setState({value: event.target.value});
     localStorage.setItem("test", localStorage.getItem("test") + " " + this.state.value);
     this.setState({value: ""});
     this.renderRow();
     event.preventDefault();
+  }
   }
   removeItem( index) {
     let list2 = localStorage.getItem("test");
@@ -62,11 +64,10 @@ class InputTodo extends Component {
   render() {
     return (
     <div>
-      <form onSubmit={this.handleSubmit}>
+      <form onKeyPress={this.handleSubmit}>
         <label>
           <textarea value={this.state.value} onChange={this.handleChange}/>
         </label>
-        <input type="submit" value="Submit"/>
       </form>
       <ul>
         {this.renderRow()}
