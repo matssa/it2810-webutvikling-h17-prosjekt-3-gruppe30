@@ -9,7 +9,9 @@ class Notes extends Component {
     this.handleChange = this.handleChange.bind(this);
   }
 
-
+  handleClear(event){
+    localStorage.setItem("value", "");
+  }
   handleChange(event) {
     this.setState({value: event.target.value});
     console.log(event.target.value);
@@ -19,12 +21,9 @@ class Notes extends Component {
   render() {
     return (
     <div>
-      <form onSubmit={this.handleSubmit}>
-        <label>
+      <form onSubmit={this.handleClear}>
           <textarea id="notes" value={localStorage.getItem('value', this.state.value)} onChange={this.handleChange}/>
           <input type="Submit" value="Clear notepad"/>
-        </label>
-
       </form>
     </div>
     );
