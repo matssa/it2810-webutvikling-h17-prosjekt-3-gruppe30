@@ -21,6 +21,8 @@ class Notes extends Component {
   render() {
     return (
     <div>
+    <h2>Here you can write notes about whatever the fuck you want.<br/>
+      The content is saved automatically. No need to save : )</h2>
       <form onSubmit={this.handleClear}>
           <textarea id="notes" value={localStorage.getItem('value', this.state.value)} onChange={this.handleChange}/>
           <input type="Submit" value="Clear notepad"/>
