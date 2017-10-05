@@ -6,6 +6,7 @@ import { NavBar } from "./NavBar.js"
 import Notes from "./Notes.js";
 import Appointment from "./Appointment.js"
 import { BrowserRouter as Router, Route} from "react-router-dom";
+import Home from "./Home"
 
 
 class App extends Component {
@@ -14,12 +15,11 @@ class App extends Component {
       <Router>
         <div className="App">
           <NavBar />
-          <h1>Your personal information manager</h1>
-          <p>Here you can create todos, appointments and notes : )</p>
           <Route exact path="/Todo" component={InputTodo}/>
           <Route exact path="/Appointments" component={Appointment}/>
           <Route exact path="/Notes" component={Notes}/>
-          <Footer/>
+          <Route exact path="/" component={Home}/>
+          <Footer />
         </div>
       </Router>
     );
