@@ -26,9 +26,11 @@ class InputTodo extends Component {
 
   handleSubmit(event) {
 if (event.which === 13) {
-    this.state.items.push(this.state.value);
+    let underScoreString = this.state.value.replace(/ /g,"_");
+    console.log(underScoreString);
+    this.state.items.push(underScoreString);
     this.setState({value: event.target.value});
-    localStorage.setItem("test", localStorage.getItem("test") + " " + this.state.value);
+    localStorage.setItem("test", localStorage.getItem("test") + " " + underScoreString);
     this.setState({value: ""});
     this.renderRow();
     event.preventDefault();
@@ -54,8 +56,10 @@ if (event.which === 13) {
   renderRow() {
     let newList = "" + localStorage.getItem("test");
     let wordArray = this.turnFakeListtoRealList(newList);
-    console.log(localStorage.getItem("test"));
-    let listItems = wordArray.map((l, index) =>
+    console.log(wordArray);
+    let w = wordArray.map(function(item,index){ return item.replace(/_/g, " ")});
+    console.log(w);
+    let listItems = w.map((l, index) =>
     <li key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems
