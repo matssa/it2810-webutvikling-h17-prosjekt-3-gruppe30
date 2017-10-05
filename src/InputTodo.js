@@ -44,7 +44,7 @@ if (event.which === 13) {
 
   turnFakeListtoRealList(list) {
     let i = "" + list.replace(/"/g, '');
-    let y = i.replace(/[\[\]']+/g,'');
+    let y = i.replace(/[[\]']+/g,'');
     let b = y.replace(/,/g, ' ');
     let words = b;
     let wordArray = words.split(' ');
