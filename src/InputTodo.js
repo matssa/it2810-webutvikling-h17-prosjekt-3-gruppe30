@@ -59,10 +59,6 @@ class InputTodo extends Component {
     return listItems
   }
 
-
-
-
-
   render() {
     return (
     <div>
