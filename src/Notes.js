@@ -23,6 +23,9 @@ class Notes extends Component {
 
   handleChange(event) {
     this.setState({value: event.target.value});
+    console.log(event.target.value);
+    localStorage.setItem('value', event.target.value);
+    console.log(localStorage);
   }
 
   handleSubmit(event) {
@@ -44,13 +47,10 @@ class Notes extends Component {
     <div>
       <form onSubmit={this.handleSubmit}>
         <label>
-        <textarea id="notes" value={this.state.value} onChange={this.handleChange}/>
+          <textarea id="notes" value={localStorage.getItem('value', this.state.value)} onChange={this.handleChange}/>
         </label>
-        <input type="submit" value="Submit"/>
+
       </form>
-      <ul>
-        {listItems}
-      </ul>
     </div>
     );
   }
