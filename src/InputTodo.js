@@ -5,7 +5,7 @@ class InputTodo extends Component {
     super(props);
     this.state = {
       text: '',
-      items: ['']
+      items: []
     };
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -27,29 +27,21 @@ class InputTodo extends Component {
   handleSubmit(event) {
     this.state.items.push(this.state.value);
     this.setState({value: event.target.value});
-    console.log(localStorage.getItem("test"));
-    localStorage.setItem("test", 'test' + this.state.value);
-
-    //let newList = localStorage.getItem("test");
-    //let wordArray = this.turnFakeListtoRealList(newList);
-
-    //console.log(wordArray);
-    //let megalist = wordArray.concat(this.state.items);
-
-    //localStorage.setItem("test", JSON.stringify(megalist));
+    localStorage.setItem("test", localStorage.getItem("test") + " " + this.state.value);
     this.setState({value: ""});
     this.renderRow();
     event.preventDefault();
   }
   removeItem( index) {
-    let list = this.state.items;
+    let list2 = localStorage.getItem("test");
+    let list = this.turnFakeListtoRealList(list2);
     list.splice(index,1);
     this.setState({items: list});
     localStorage.setItem("test", JSON.stringify(list));
   }
 
   turnFakeListtoRealList(list) {
-    let i = list.replace(/"/g, '');
+    let i = "" + list.replace(/"/g, '');
     let y = i.replace(/[\[\]']+/g,'');
     let b = y.replace(/,/g, ' ');
     let words = b;
@@ -60,11 +52,16 @@ class InputTodo extends Component {
   renderRow() {
     let newList = "" + localStorage.getItem("test");
     let wordArray = this.turnFakeListtoRealList(newList);
+    console.log(localStorage.getItem("test"));
     let listItems = wordArray.map((l, index) =>
     <li key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems
   }
+
+
+
+
 
   render() {
     return (
