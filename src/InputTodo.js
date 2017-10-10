@@ -25,17 +25,23 @@ class InputTodo extends Component {
   }
 
   handleSubmit(event) {
-if (event.which === 13) {
-    let underScoreString = this.state.value.replace(/ /g,"_");
-    console.log(underScoreString);
-    this.state.items.push(underScoreString);
-    this.setState({value: event.target.value});
-    localStorage.setItem("test", localStorage.getItem("test") + " " + underScoreString);
-    this.setState({value: ""});
-    this.renderRow();
-    event.preventDefault();
+    if(document.getElementById("textarea").value != "") {
+
+    if (event.which === 13) {
+      let underScoreString = this.state.value.replace(/ /g,"_");
+      console.log(underScoreString);
+      this.state.items.push(underScoreString);
+      this.setState({value: event.target.value});
+      localStorage.setItem("test", localStorage.getItem("test") + " " + underScoreString);
+      this.setState({value: ""});
+      this.renderRow();
+      event.preventDefault();
   }
   }
+  else {
+    return false;
+  }
+}
   removeItem( index) {
     let list2 = localStorage.getItem("test");
     let list = this.turnFakeListtoRealList(list2);
@@ -68,10 +74,10 @@ if (event.which === 13) {
   render() {
     return (
     <div>
-    <h2>Here you can make a todo-list to help you remember shit</h2>
+      <h2>Here you can make a todo-list to help you remember shit</h2>
       <form onKeyPress={this.handleSubmit}>
         <label>
-          <textarea value={this.state.value} onChange={this.handleChange}/>
+          <input id="textarea" value={this.state.value} onChange={this.handleChange}/>
         </label>
       </form>
       <ul>
