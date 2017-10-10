@@ -13,7 +13,7 @@ footer{
   width: 100%;
   text-align: center;
 }
-a{
+.navs{
   padding: 20px;
   text-decoration: none;
   color: white;
@@ -44,9 +44,23 @@ li{
 li:first-child{
    visibility: hidden;
 }
+a{
+  text-decoration: none;
+  color: white;
+}
 
 textarea {
   resize: none;
 white-space: nowrap;
 overflow-x: scroll;
+}
+.cardContainer{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+#todoCard, #noteCard, #appointmentCard{
+  height: 300px;
+  width: 300px;
 }

@@ -74,7 +74,7 @@ class InputTodo extends Component {
   render() {
     return (
     <div>
-      <h2>Here you can make a todo-list to help you remember shit</h2>
+      <h2>Here you can make a todo-list to help you remember chores</h2>
       <form onKeyPress={this.handleSubmit}>
         <label>
           <input id="textarea" value={this.state.value} onChange={this.handleChange}/>
