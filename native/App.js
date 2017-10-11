@@ -1,7 +1,8 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import ImageBackground from "ImageBackground";
+import Notes from "./Notes"
+
 class HomeScreen extends React.Component {
   static navigationOptions = {
     title: 'Welcome'
@@ -54,14 +55,7 @@ class NoteScreen extends React.Component {
       <View>
         <Text>Here you can write notes about whatever you want.</Text>
         <Text>The content is saved automatically.</Text>
-        <TextInput
-        multiline= {true}
-        numberOfLines= {4}
-        blurOnSubmit={false}
-        style={{height: 150, borderColor: 'gray', borderWidth: 1}}
-        onChangeText={(text) => this.setState({text})}
-        value={this.state.text}
-        />
+        <Notes />
       </View>
       );
     }
