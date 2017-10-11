@@ -43,13 +43,6 @@ class TodoScreen extends React.Component {
 }
 
 class NoteScreen extends React.Component {
-  constructor(props) {
-  super(props);
-  this.state = {
-    text: '',
-    items: []
-  };
-}
   render() {
     return (
       <View>
