@@ -10,18 +10,17 @@ class Notes extends Component {
 
   setNotes = (value) => {
       AsyncStorage.setItem('notes', value);
+      this.setState({"notes": value})
    }
   render() {
     return (
     <View>
-      <TextInput style={{height: 100}}
+      <TextInput value={this.state.notes}
+      style={{height: 100}}
       multiline= {true}
       numberOfLines= {4}
       blurOnSubmit={false}
       onChangeText = {this.setNotes}/>
-      <Text>
-        {this.state.notes}
-      </Text>
     </View>
   )
   }
