@@ -25,37 +25,60 @@ class InputTodo extends Component {
   }
 
   handleSubmit(event) {
-    this.state.items.push(this.state.value);
-    this.setState({value: event.target.value});
-    console.log(localStorage)
-    this.setState({value: ""});
-    event.preventDefault();
+    if(document.getElementById("textarea").value != "") {
+
+    if (event.which === 13) {
+      let underScoreString = this.state.value.replace(/ /g,"_");
+      console.log(underScoreString);
+      this.state.items.push(underScoreString);
+      this.setState({value: event.target.value});
+      localStorage.setItem("test", localStorage.getItem("test") + " " + underScoreString);
+      this.setState({value: ""});
+      this.renderRow();
+      event.preventDefault();
+  }
+  }
+  else {
+    return false;
+  }
+}
+  removeItem( index) {
+    let list2 = localStorage.getItem("test");
+    let list = this.turnFakeListtoRealList(list2);
+    list.splice(index,1);
+    this.setState({items: list});
+    localStorage.setItem("test", JSON.stringify(list));
+  }
+
+  turnFakeListtoRealList(list) {
+    let i = "" + list.replace(/"/g, '');
+    let y = i.replace(/[[\]']+/g,'');
+    let b = y.replace(/,/g, ' ');
+    let words = b;
+    let wordArray = words.split(' ');
+    return wordArray
   }
 
   renderRow() {
-    let listItems = this.state.items.map((l, index) =>
-    <li key = {index}> {l} <button id="removeItem" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
+    let newList = "" + localStorage.getItem("test");
+    let wordArray = this.turnFakeListtoRealList(newList);
+    console.log(wordArray);
+    let w = wordArray.map(function(item,index){ return item.replace(/_/g, " ")});
+    console.log(w);
+    let listItems = w.map((l, index) =>
+    <li key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems
   }
 
-  removeItem( index) {
-    let list = this.state.items;
-    list.splice(index,1);
-    this.setState({items: list});
-
-  }
-
-
-
   render() {
     return (
     <div>
-      <form onSubmit={this.handleSubmit}>
+      <h2>Here you can make a todo-list to help you remember chores</h2>
+      <form onKeyPress={this.handleSubmit}>
         <label>
-          <textarea value={this.state.value} onChange={this.handleChange}/>
+          <input id="textarea" value={this.state.value} onChange={this.handleChange}/>
         </label>
-        <input type="submit" value="Submit"/>
       </form>
       <ul>
         {this.renderRow()}
