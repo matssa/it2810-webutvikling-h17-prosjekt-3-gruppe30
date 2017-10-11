@@ -11,7 +11,7 @@ class FormAppoint extends Component {
       text: '',
       items: [],
       value24: null,
-      valuedate: null   
+      valuedate: null
     };
     this.handleChangeTimePicker24 = this.handleChangeTimePicker24.bind(this);
     this.handleChangeDatePicker = this.handleChangeDatePicker.bind(this);
@@ -31,13 +31,13 @@ class FormAppoint extends Component {
   handleChange(event) {
     this.setState({value: event.target.value});
   }
-  
-      
-    
+
+
+
   handleChangeTimePicker24(event, date){
     this.setState({value24: date});
   }
-  
+
   handleChangeDatePicker(event, date){
     this.setState({valuedate: date,});
   };
@@ -48,7 +48,7 @@ class FormAppoint extends Component {
     var day = datovar.getDate();
     var year = datovar.getFullYear();
     var datofix = day+'/'+(mon+1)+'/'+year
-    
+
     var timevar = new Date(this.state.value24);
     var hour = timevar.getHours();
     var minute = timevar.getMinutes();
@@ -64,7 +64,7 @@ class FormAppoint extends Component {
 
   renderRow() {
     let listItems = this.state.items.map((l, index) =>
-    <li key = {index}> {l} <button id="removeItem" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
+    <li key = {index} id="appointmentList"> {l} <button id="removeItem" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems
   }
@@ -74,33 +74,33 @@ class FormAppoint extends Component {
     list.splice(index,1);
     this.setState({items: list});
   }
-  
+
 
   render() {
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
-        <MuiThemeProvider>   
-                <DatePicker 
-                    hintText="Dato" 
+        <MuiThemeProvider>
+                <DatePicker
+                    hintText="Dato"
                     firstDayOfWeek={0}
                     value={this.state.valuedate}
                     onChange={this.handleChangeDatePicker}
-                    
+
                 />
-                <TimePicker 
-                    hintText="Klokkeslett" 
+                <TimePicker
+                    hintText="Klokkeslett"
                     format="24hr"
                     value={this.state.value24}
                     onChange={this.handleChangeTimePicker24}
                 />
         </MuiThemeProvider>
         <label>
-          <textarea 
-            value={this.state.value} 
+          <textarea
+            value={this.state.value}
             onChange={this.handleChange}/>
         </label>
-        
+
         <input type="submit" value="Submit"/>
       </form>
       <ul>
