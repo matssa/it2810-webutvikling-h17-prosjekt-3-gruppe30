@@ -37,8 +37,15 @@ nav {
   border: solid 1px #ddd;
   padding-left: 100px;
 }
+
 li{
   list-style: none;
+}
+
+li{
+    margin-bottom:3%;
+    border-bottom: thin solid white;
+    font-weight: bold;
 }
 
 li:first-child{
