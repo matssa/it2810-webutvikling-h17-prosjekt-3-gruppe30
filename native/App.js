@@ -10,7 +10,7 @@ class HomeScreen extends React.Component {
     const { navigate } = this.props.navigation;
     return (
       <View>
-        <Text>Hello, Chat App!</Text>
+        <Text>Welcome to your personal information manager</Text>
         <Button
           onPress={() => navigate('Todo')}
           title="Todo"
