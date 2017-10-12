@@ -39,13 +39,16 @@ nav {
 }
 
 li{
+  
   list-style: none;
+  width:30%;
+  font-size:180%;
 }
 
 #appointmentList{
   margin-bottom:3%;
   border-bottom: thin solid white;
-  font-weight: bold;
+  /*font-weight: bold;*/
 }
 
 li:first-child{

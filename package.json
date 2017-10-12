@@ -6,6 +6,8 @@
     "material-ui": "^0.19.3",
     "react": "^16.0.0",
     "react-dom": "^16.0.0",
+    "react-newline-to-break": "^1.0.6",
+    "react-nl2br": "^0.4.0",
     "react-router-dom": "4.1.1",
     "react-scripts": "1.0.14",
     "simple-date-picker": "^0.1.1"
