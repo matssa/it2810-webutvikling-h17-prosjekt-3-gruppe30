@@ -39,7 +39,7 @@ nav {
 }
 
 li{
-  
+
   list-style: none;
   width:30%;
   font-size:180%;
@@ -51,7 +51,7 @@ li{
   /*font-weight: bold;*/
 }
 
-todoList li:first-child{
+li:first-child{
    visibility: hidden;
 }
 
