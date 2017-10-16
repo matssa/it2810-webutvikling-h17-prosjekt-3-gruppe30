@@ -17,7 +17,7 @@ class InputTodo extends Component {
   }
 
   addInput({input}) {
-    this.setState({value: input})
+    this.setState({value: input});
   }
 
   handleChange(event) {
@@ -25,7 +25,7 @@ class InputTodo extends Component {
   }
 
   handleSubmit(event) {
-    if(document.getElementById("textarea").value != "") {
+    if(document.getElementById("textarea").value !== "") {
 
     if (event.which === 13) {
       let underScoreString = this.state.value.replace(/ /g,"_");
@@ -36,7 +36,7 @@ class InputTodo extends Component {
       this.setState({value: ""});
       this.renderRow();
       event.preventDefault();
-  }
+    }
   }
   else {
     return false;
@@ -66,7 +66,7 @@ class InputTodo extends Component {
     let w = wordArray.map(function(item,index){ return item.replace(/_/g, " ")});
     console.log(w);
     let listItems = w.map((l, index) =>
-    <li id="todoList" key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
+    <li key = {index} id="item"><button id="removeItem" onClick={() => this.removeItem(index)}>{l}</button> </li>
     );
     return listItems
   }
@@ -74,15 +74,17 @@ class InputTodo extends Component {
   render() {
     return (
     <div>
-      <h2>Here you can make a todo-list to help you remember chores</h2>
+      <h2>Here you can make a todo-list to help you remember.</h2>
       <form onKeyPress={this.handleSubmit}>
         <label>
           <input id="textarea" value={this.state.value} onChange={this.handleChange}/>
         </label>
       </form>
-      <ul>
-        {this.renderRow()}
-      </ul>
+      <div id="todoList">
+        <ul>
+          {this.renderRow()}
+        </ul>
+      </div>
     </div>
     );
   }

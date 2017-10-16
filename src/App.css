@@ -62,8 +62,8 @@ a{
 
 textarea {
   resize: none;
-white-space: nowrap;
-overflow-x: scroll;
+  white-space: nowrap;
+  overflow-x: scroll;
 }
 .cardContainer{
   display: flex;
@@ -74,4 +74,18 @@ overflow-x: scroll;
 #todoCard, #noteCard, #appointmentCard{
   height: 300px;
   width: 300px;
+}
+
+#removeItem {
+  width: 200px;
+  border: 1px;
+  border-style: solid;
+  border-color: black;
+  text-align: left;
+  font-size: 16px;
+  margin: 4px 2px;
+}
+
+#removeItem:focus {
+  outline:0;
 }
