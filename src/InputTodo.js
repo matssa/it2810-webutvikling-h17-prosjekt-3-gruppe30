@@ -66,7 +66,7 @@ class InputTodo extends Component {
     let w = wordArray.map(function(item,index){ return item.replace(/_/g, " ")});
     console.log(w);
     let listItems = w.map((l, index) =>
-    <li key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
+    <li id="todoList" key = {index}> {l} <button id="removeItem" onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems
   }
