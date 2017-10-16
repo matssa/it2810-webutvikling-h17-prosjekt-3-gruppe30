@@ -2,10 +2,9 @@ import React, {Component} from 'react';
 import DatePicker from 'material-ui/DatePicker';
 import TimePicker from 'material-ui/TimePicker';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
-import nl2br from 'react-newline-to-break';
 
 
-class FormAppoint extends Component {
+class FormAppointment extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -112,4 +111,4 @@ class FormAppoint extends Component {
   }
 }
 
-export default FormAppoint;
+export default FormAppointment;

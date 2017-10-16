@@ -51,7 +51,7 @@ li{
   /*font-weight: bold;*/
 }
 
-li:first-child{
+todoList li:first-child{
    visibility: hidden;
 }
 
