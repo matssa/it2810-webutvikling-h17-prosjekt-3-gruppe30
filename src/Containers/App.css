@@ -12,6 +12,7 @@ footer{
   bottom: 0;
   width: 100%;
   text-align: center;
+  height: 30px;
 }
 .navs{
   padding: 20px;
@@ -51,7 +52,7 @@ li{
   /*font-weight: bold;*/
 }
 
-li:first-child{
+#item:first-child{
    visibility: hidden;
 }
 

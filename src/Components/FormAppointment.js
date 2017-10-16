@@ -54,10 +54,10 @@ class FormAppointment extends Component {
     this.setState({value: ""});
     event.preventDefault();
   }
-    
+
   renderRow() {
     let listItems = this.state.items.map((l, index) =>
-    <li key = {index} id="appointmentList"> {l} <button id="removeItem" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
+    <li key = {index} id="appointmentList"> {l} <button id="removeAppointment" value={this.props.items} onClick={() => this.removeItem(index)}/> </li>
     );
     return listItems;
   }
@@ -72,9 +72,9 @@ class FormAppointment extends Component {
 
 
   render() {
-    
+
     return (
-    <div>   
+    <div>
       <form onSubmit={this.handleSubmit}>
         <MuiThemeProvider>
                 <DatePicker

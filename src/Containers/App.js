@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
 import './App.css';
-import InputTodo from './InputTodo';
-import Footer from "./Footer";
-import { NavBar } from "./NavBar.js"
-import Notes from "./Notes.js";
-import Appointment from "./Appointment.js"
+import InputTodo from '../Components/InputTodo';
+import Footer from "../Components/Footer";
+import { NavBar } from "../Components/NavBar.js"
+import Notes from "../Components/Notes.js";
+import Appointment from "../Components/Appointment.js"
 import { BrowserRouter as Router, Route} from "react-router-dom";
-import Home from "./Home"
+import Home from "../Components/Home"
 
 
 class App extends Component {
