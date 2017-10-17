@@ -62,11 +62,13 @@ class InputTodo extends Component {
   renderRow() {
     let newList = "" + localStorage.getItem("test");
     let wordArray = this.turnFakeListtoRealList(newList);
-    console.log(wordArray);
     let w = wordArray.map(function(item,index){ return item.replace(/_/g, " ")});
-    console.log(w);
     let listItems = w.map((l, index) =>
-    <li key = {index} id="item"><button id="removeItem" onClick={() => this.removeItem(index)}>{l}</button> </li>
+      <li key = {index} id="item">
+        <button id="removeItem" onClick={() => this.removeItem(index)}>
+        {l}
+        </button>
+      </li>
     );
     return listItems
   }
