@@ -2,6 +2,9 @@ import React from 'react';
 import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Notes from "./Notes"
+import Todo from "./Todo"
+
+
 
 class HomeScreen extends React.Component {
   static navigationOptions = {
@@ -37,6 +40,7 @@ class TodoScreen extends React.Component {
     return (
       <View>
         <Text>Todo</Text>
+        <Todo/>
       </View>
     );
   }
