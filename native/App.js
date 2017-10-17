@@ -1,29 +1,38 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Image, TouchableHighlight,
+StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
 import Notes from "./Notes"
 
+
+//displays the homescreen with the images as links
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome'
+    title: 'Personal information manager'
   };
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate} = this.props.navigation;
     return (
-      <View>
-        <Text>Welcome to your personal information manager</Text>
-        <Button
-          onPress={() => navigate('Todo')}
-          title="Todo"
-        />
-        <Button
-          onPress={() => navigate('Notes')}
-          title="Make notes"
-        />
-        <Button
-          onPress={() => navigate('Appointments')}
-          title="Set up appointments"
-        />
+      <View style={styles.container}>
+        <StatusBar barStyle = "dark-content" hidden = {true}/>
+        <Text style={{fontSize: 15, fontWeight: "bold", color: "blue"}}>
+          Make todo-list</Text>
+        <TouchableHighlight onPress={() => navigate('Todo')}>
+          <Image style={{height: 150, width: 150}} source=
+          {require('./img/todo.png')} />
+        </TouchableHighlight>
+        <Text style={{fontSize: 15, fontWeight: "bold", color: "blue"}}>
+          Make appointments</Text>
+        <TouchableHighlight onPress={() => navigate('Appointments')}>
+          <Image style={{height: 150, width: 150}} source=
+          {require('./img/appoint.png')} />
+        </TouchableHighlight>
+        <Text style={{fontSize: 15, fontWeight: "bold", color: "blue"}}>
+          Take notes  </Text>
+        <TouchableHighlight onPress={() => navigate('Notes')}>
+          <Image style={{height: 150, width: 150}} source=
+          {require('./img/notes.png')} />
+        </TouchableHighlight>
       </View>
     );
   }
@@ -31,7 +40,7 @@ class HomeScreen extends React.Component {
 
 class TodoScreen extends React.Component {
   static navigationOptions = {
-    title: 'Create todo list',
+    title: 'Todo-list',
   };
   render() {
     return (
@@ -43,6 +52,9 @@ class TodoScreen extends React.Component {
 }
 
 class NoteScreen extends React.Component {
+  static navigationOptions = {
+    title: 'Notes',
+  };
   render() {
     return (
       <View>
@@ -54,8 +66,9 @@ class NoteScreen extends React.Component {
     }
 }
 class AppointmentScreen extends React.Component {
+
   static navigationOptions = {
-    title: 'Create appointments',
+    title: 'Appointments',
   };
   render() {
     return (
@@ -82,8 +95,8 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // remove width and height to override fixed static size
-    width: null,
-    height: null,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-between"
   }
 });
