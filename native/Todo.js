@@ -5,10 +5,16 @@ class Todo extends Component {
 
    state = {
       notes : "",
-      names: [{id: 0, name: "yo"},{id: 1, name: "yyo"},{id: 2, name: "yyyo"},{id: 3, name: "yyyyo"},{id: 4, name: "yyyyyo"}],
+      names: [],
    }
    alertItemName = (item) => {
-      this.state.names.splice(item.id, 1);
+      // Iterate through list of todos and removes object matching parameter
+      for(let i = 0; i < this.state.names.length; i++) {
+        if(item === this.state.names[i]) {
+            this.state.names.splice(i, 1);
+            break;
+        }
+      }
       this.setState({"notes": ""});
       this.renderRow();
    }
@@ -19,12 +25,8 @@ class Todo extends Component {
    }
 
    addTest = (item) => {
-     if (this.state.items.length === 0) {
-       i = 0
-     } else {
-       let i = this.state.names.length - 1;
-     }
-     let object = {id: i, name: item};
+
+     let object = {name: item};
      this.state.names.push(object);
      this.setState({"notes": ""});
      this.renderRow();
