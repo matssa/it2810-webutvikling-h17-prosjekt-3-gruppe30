@@ -1,98 +1,112 @@
-import React, { Component } from 'react'
-import { Text, TextInput, AsyncStorage, Button, View, TouchableOpacity, StyleSheet } from 'react-native'
+import React, {Component} from 'react';
+import {StyleSheet, View, Text, TextInput, Button, ScrollView} from 'react-native';
+import PropTypes from 'prop-types';
+import {storeItem, getTodos} from './asyncStorage';
 
+/**
+ * Todo component. Add, complete or remove todos.
+ */
 class Todo extends Component {
-   state = {
-      notes : "",
-      names: [
-         {
-            id: 0,
-            name: 'Ben',
-         },
-         {
-            id: 1,
-            name: 'Susan',
-         },
-         {
-            id: 2,
-            name: 'Robert',
-         },
-         {
-            id: 3,
-            name: 'Mary',
-         }
-      ]
-   }
-   alertItemName = (item) => {
-      alert(item.name)
-   }
+  constructor(props) {
+    super(props);
+    this.state = {
+      todos: getTodos(),
+      value: ''
+    };
+    this.handleSubmit = this.handleSubmit.bind(this);
+    this.changeStorage = this.changeStorage.bind(this);
+    this.removeStorageItem = this.removeStorageItem.bind(this);
+  }
 
-   addItem = (item) => {
-     this.state.names.push(1, this.state.notes);
-     this.renderRow();
-   }
+  /* Handles submit of add todo form */
+  handleSubmit(event) {
+    if (this.state.value === '') return;
+    const todo = {
+      id: (((1 + Math.random()) * 0x10000) | 0).toString(16).substring(-1),
+      value: this.state.value,
+      check: false
+    };
+    this.setState({
+      todos: [...this.state.todos, todo],
+      value: ''
+    }, () => {
+      storeItem('todos', this.state.todos)
+    });
+  }
 
-   setNotes = (value) => {
-       AsyncStorage.setItem('notes', value);
-       this.setState({"notes": value})
+  /* Stores the todos list in state in localstorage */
+  changeStorage(id) {
+    let todosList = [...this.state.todos];
+    for (let todo in todosList) {
+      let todos = this.state.todos[todo];
+      if (todos.id === id) {
+        todos.check = !todos.check;
+      }
     }
+    this.setState({
+      todos: todosList
+    }, () => {
+      storeItem('todos', todosList);
+    });
+  }
 
-    lapsList() {
+  /* Removes todo item by updating storage list */
+  removeStorageItem(id) {
+    this.setState({
+      todos: this.state.todos.filter(e => e.id !== id)
+    }, () => {
+      storeItem('todos', this.state.todos);
+    });
+  }
 
-    return this.state.names.map((data) => {
-      return (
-        <View><Text>{data}</Text></View>
-      )
-    })
+  render() {
+    const {value, todos} = this.state;
 
-}
+    const styles = StyleSheet.create({
+      container: {
+        backgroundColor: 'lightgrey',
+        padding: 10,
+        width: 400,
+        marginTop: 300
+      },
+      inputfield: {
+        borderColor: 'dodgerblue',
+        borderWidth: 1,
+        borderRadius: 5,
+        padding: 2
+      }
+    });
 
-    renderRow() {
-      let items = this.state.names.map((item, index) => (
-        <TouchableOpacity
-          key = {item.id}
-          style = {styles.container}
-          onPress = {() => this.alertItemName(item)}>
+    const inputForm = <View style={styles.container}>
+      <Text>What to do:</Text>
+      <TextInput
+        style={styles.inputfield}
+        value={value}
+        onChangeText={value => this.setState({value})}
+        onSubmitEditing={this.handleSubmit}
+        placeholder="Your todo here"
+        maxLength={75}/>
+      <Button onPress={this.handleSubmit} title="Submit"/>
+    </View>;
 
-          <Text style = {styles.text}>
-            {item.name}
-          </Text>
-        </TouchableOpacity>
-      ))
-      return items;
-    }
+    const list = <View>
+      {todos.length ? <Text>All of your todo’s:</Text> : null}
+      <ScrollView>
+        {todos.map(key => <View id={key.id} key={key.id}>
+          <Text onClick={() => this.changeStorage(key.id)}>{key.value}</Text>
+          <Button onPress={() => this.removeStorageItem(key.id)} title="x"/>
+        </View>)}
+      </ScrollView>
+    </View>;
 
-   render() {
-      return (
-         <View>
-           <View>
-             <TextInput value={this.state.notes}
-               style={{height: 100}}
-               multiline= {true}
-               numberOfLines= {4}
-               blurOnSubmit={false}
-               onSubmitEditing={ () => this.addItem() }
-               onChangeText = {this.setNotes}/>
-             <Button
-               onPress={() => this.addItem(this.state.notes)}
-               title="Submit"
-             />
-           </View>
-           {this.renderRow()}
-         </View>
-      )
-   }
-}
-export default Todo
+    return (
+      <View>{inputForm}{list}</View>
+    );
+  };
+};
 
-const styles = StyleSheet.create ({
-   container: {
-      padding: 10,
-      marginTop: 3,
-      backgroundColor: '#d9f9b1',
-      alignItems: 'center',
-   },
-   text: {
-      color: '#4f603c'
-   }
-})
+Todo.propTypes = {
+  todos: PropTypes.array
+};
+
+export default Todo;
