@@ -32,8 +32,6 @@ class FormAppointment extends Component {
     this.setState({value: event.target.value});
   }
 
-
-
   handleChangeTimePicker24(event, date){
     this.setState({value24: date});
   }
@@ -68,29 +66,26 @@ class FormAppointment extends Component {
     this.setState({items: list});
   }
 
-
-
-
   render() {
 
     return (
     <div>
       <form onSubmit={this.handleSubmit}>
         <MuiThemeProvider>
-                <DatePicker
-                    hintText="Dato"
-                    firstDayOfWeek={0}
-                    value={this.state.valuedate}
-                    onChange={this.handleChangeDatePicker}
-                    required
-                />
-                <TimePicker
-                    hintText="Klokkeslett"
-                    format="24hr"
-                    value={this.state.value24}
-                    onChange={this.handleChangeTimePicker24}
-                    required
-                />
+          <DatePicker
+            hintText="Dato"
+            firstDayOfWeek={0}
+            value={this.state.valuedate}
+            onChange={this.handleChangeDatePicker}
+            required
+          />
+          <TimePicker
+            hintText="Klokkeslett"
+            format="24hr"
+            value={this.state.value24}
+            onChange={this.handleChangeTimePicker24}
+            required
+          />
         </MuiThemeProvider>
         <label>
           <textarea
@@ -100,7 +95,6 @@ class FormAppointment extends Component {
             maxlength="50"
           />
         </label>
-
         <input type="submit" value="Submit"/>
       </form>
       <ul>
