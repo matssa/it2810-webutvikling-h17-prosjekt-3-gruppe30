@@ -25,7 +25,7 @@ class Notes extends Component {
       title="Clear Notes"
     />
       <Image style={styles.image} source=
-      {require('./img/noteback.jpg')}>
+      {require("../img/noteback.jpg")}>
         <TextInput style={styles.textContainer}
         value={this.state.notes}
         multiline= {true}
