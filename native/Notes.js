@@ -1,13 +1,13 @@
 import React, { Component } from "react";
-import { AsyncStorage, Text, View, TextInput, StyleSheet, Button } from "react-native";
+import { AsyncStorage, Text, View, TextInput, StyleSheet, Button, Image } from "react-native";
 
 class Notes extends Component {
   state = {
     "notes": ""
   }
-  clearNotes = (value) => {
+  clearNotes = () => {
     AsyncStorage.setItem("notes", "");
-    this.setState({"notes": value})
+    this.setState({"notes": ""})
   }
   componentDidMount = () => AsyncStorage.getItem("notes").then((value) =>
   this.setState({ "notes": value}))
@@ -20,18 +20,36 @@ class Notes extends Component {
   render() {
     return (
     <View>
-      <TextInput value={this.state.notes}
-      style={{height: 100}}
-      multiline= {true}
-      numberOfLines= {4}
-      blurOnSubmit={false}
-      onChangeText = {this.setNotes}/>
-      <Button
-        onPress={this.clearNotes}
-        title="Clear Notes"
-      />
+    <Button
+      onPress={this.clearNotes}
+      title="Clear Notes"
+    />
+      <Image style={styles.image} source=
+      {require('./img/noteback.jpg')}>
+        <TextInput style={styles.textContainer}
+        value={this.state.notes}
+        multiline= {true}
+        blurOnSubmit={false}
+        onChangeText = {this.setNotes}
+        autoGrow = {true}/>
+        </Image>
+
     </View>
     )
   }
 }
 export default Notes;
+
+const styles = StyleSheet.create({
+  textContainer: {
+    height: '100%',
+    width: '100%',
+    textAlignVertical: "top",
+    fontSize: 29,
+},
+image: {
+  height: "100%",
+  width: "100%",
+},
+
+})

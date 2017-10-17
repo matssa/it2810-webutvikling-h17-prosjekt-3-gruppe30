@@ -18,7 +18,7 @@ class HomeScreen extends React.Component {
         <Text style={{fontSize: 15, fontWeight: "bold", color: "blue"}}>
           Make todo-list</Text>
         <TouchableHighlight onPress={() => navigate('Todo')}>
-          <Image style={{height: 150, width: 150}} source=
+          <Image style={{height: 150, width: 200}} source=
           {require('./img/todo.png')} />
         </TouchableHighlight>
         <Text style={{fontSize: 15, fontWeight: "bold", color: "blue"}}>
