@@ -1,66 +1,39 @@
 import React from 'react';
-import { StyleSheet, Text, View, Button, TextInput } from 'react-native';
+import { StyleSheet, Text, View, Button, TextInput, Image, TouchableHighlight,
+StatusBar } from 'react-native';
 import { StackNavigator } from 'react-navigation';
-import Notes from "./Notes"
+import NoteScreen from "./containers/NoteScreen"
+import TodoScreen from "./containers/TodoScreen"
+import AppointmentScreen from "./containers/AppointmentScreen"
 
+//displays the homescreen with the images as links
 class HomeScreen extends React.Component {
   static navigationOptions = {
-    title: 'Welcome'
+    title: 'Personal information manager'
   };
   render() {
-    const { navigate } = this.props.navigation;
+    const { navigate} = this.props.navigation;
     return (
-      <View>
-        <Text>Welcome to your personal information manager</Text>
-        <Button
-          onPress={() => navigate('Todo')}
-          title="Todo"
-        />
-        <Button
-          onPress={() => navigate('Notes')}
-          title="Make notes"
-        />
-        <Button
-          onPress={() => navigate('Appointments')}
-          title="Set up appointments"
-        />
-      </View>
-    );
-  }
-}
-
-class TodoScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Create todo list',
-  };
-  render() {
-    return (
-      <View>
-        <Text>Todo</Text>
-      </View>
-    );
-  }
-}
-
-class NoteScreen extends React.Component {
-  render() {
-    return (
-      <View>
-        <Text>Here you can write notes about whatever you want.</Text>
-        <Text>The content is saved automatically.</Text>
-        <Notes />
-      </View>
-      );
-    }
-}
-class AppointmentScreen extends React.Component {
-  static navigationOptions = {
-    title: 'Create appointments',
-  };
-  render() {
-    return (
-      <View>
-        <Text>Appointments</Text>
+      <View style={styles.container}>
+        <StatusBar barStyle = "dark-content" hidden = {true}/>
+        <Text style={styles.text}>
+          Make todo-list</Text>
+        <TouchableHighlight onPress={() => navigate('Todo')}>
+          <Image style={styles.images} source=
+          {require('./img/todo.png')} />
+        </TouchableHighlight>
+        <Text style={styles.text}>
+          Make appointments</Text>
+        <TouchableHighlight onPress={() => navigate('Appointments')}>
+          <Image style={styles.images} source=
+          {require('./img/appoint.png')} />
+        </TouchableHighlight>
+        <Text style={styles.text}>
+          Take notes  </Text>
+        <TouchableHighlight onPress={() => navigate('Notes')}>
+          <Image style={styles.images} source=
+          {require('./img/notes.png')} />
+        </TouchableHighlight>
       </View>
     );
   }
@@ -82,8 +55,18 @@ export default class App extends React.Component {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    // remove width and height to override fixed static size
-    width: null,
-    height: null,
+    flexDirection: "column",
+    alignItems: "center",
+    justifyContent: "space-around"
+  },
+  text: {
+    fontSize: 18,
+    fontWeight: "bold",
+    color: "blue",
+  },
+  images: {
+    height: 170,
+    width: 190,
+    resizeMode: "stretch",
   }
 });
