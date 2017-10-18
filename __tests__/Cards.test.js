@@ -1,6 +1,12 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import Cards from '../src/Components/Cards.js';
 
-it("sample", () => {
-	expect(true).toBe(true);
+describe('<Cards/>, functions', () => {
+	it('should match to previous snapshots', () => {
+		const component = shallow(<Cards />);
+		const tree = toJson(component);
+		expect(tree).toMatchSnapshot();
+	});
 });

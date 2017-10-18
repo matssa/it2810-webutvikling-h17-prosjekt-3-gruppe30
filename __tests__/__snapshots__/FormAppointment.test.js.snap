@@ -1,0 +1,53 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<FormAppointment/>, functions should match to previous snapshots 1`] = `
+<div>
+  <form
+    onSubmit={[Function]}
+  >
+    <MuiThemeProvider>
+      <DatePicker
+        autoOk={false}
+        container="dialog"
+        disableYearSelection={false}
+        disabled={false}
+        firstDayOfWeek={0}
+        hideCalendarDate={false}
+        hintText="Dato"
+        onChange={[Function]}
+        openToYearSelection={false}
+        required={true}
+        style={Object {}}
+        value={null}
+      />
+      <TimePicker
+        autoOk={false}
+        cancelLabel="Cancel"
+        defaultTime={null}
+        disabled={false}
+        format="24hr"
+        hintText="Klokkeslett"
+        minutesStep={1}
+        okLabel="OK"
+        onChange={[Function]}
+        pedantic={false}
+        required={true}
+        style={Object {}}
+        value={null}
+      />
+    </MuiThemeProvider>
+    <label>
+      <textarea
+        maxlength="50"
+        onChange={[Function]}
+        required={true}
+      />
+    </label>
+    <input
+      type="submit"
+      value="Submit"
+    />
+  </form>
+  <ul />
+</div>
+`;

@@ -1,7 +1,9 @@
-import React from "react";
-import { shallow } from "enzyme";
-//import { removeItem } from "../src/Components/InputTodo.js";
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import InputTodo from '../src/Components/InputTodo.js';
 
+// Here, we should test the functions of the component.
 /*
 const startState = {
 	text: "",
@@ -17,6 +19,17 @@ expect(finState).toEqual([
 	}
 ]);
 */
-it("sample", () => {
-	expect(true).toBe(true);
+/*
+it('should add items to state', () => {
+addInput({ text: 'hello', items: [1, 2, 3] });
+const component = shallow(<InputTodo />);
+const divInputTodo = component.find('div');
+expect(divInputTodo.length).toBe(2);
+});*/
+describe('<InputTodo/>, functions', () => {
+	it('should match to previous snapshots', () => {
+		const component = shallow(<InputTodo />);
+		const tree = toJson(component);
+		expect(tree).toMatchSnapshot();
+	});
 });

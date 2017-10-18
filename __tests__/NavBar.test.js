@@ -1,6 +1,12 @@
-import React from "react";
-import { shallow } from "enzyme";
+import React from 'react';
+import { shallow, mount, render } from 'enzyme';
+import toJson from 'enzyme-to-json';
+import NavBar from '../src/Components/NavBar.js';
 
-it("sample", () => {
-	expect(true).toBe(true);
+describe('<NavBar/>, functions', () => {
+	it('should find four <a> element', () => {
+		const component = shallow(<NavBar />);
+		const aNavBar = component.find('a');
+		expect(aNavBar.length).toBe(4);
+	});
 });
